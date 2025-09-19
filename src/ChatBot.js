@@ -10,6 +10,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 function ChatBot({ 
   messages, 
@@ -20,7 +22,10 @@ function ChatBot({
   handleInputKeyDown,
   startRecording,
   stopRecording,
-  handleFileUpload
+  handleFileUpload,
+  selectedLanguage,
+  setSelectedLanguage,
+  LANGUAGES
 }) {
   // Scroll to bottom when messages change
   const messagesEndRef = React.useRef(null);
@@ -127,6 +132,18 @@ function ChatBot({
           onKeyDown={handleInputKeyDown}
           placeholder="Type your message..."
         />
+          <Select
+            value={selectedLanguage}
+            onChange={(e) => setSelectedLanguage(e.target.value)}
+            size="small"
+            style={{ marginLeft:'8px',marginRight: '8px', minWidth: '120px' }}
+          >
+            {LANGUAGES.map((lang) => (
+              <MenuItem key={lang.code} value={lang.code}>
+                {lang.name}
+              </MenuItem>
+            ))}
+          </Select>
         <IconButton
           className={`record-button ${isRecording ? 'recording' : ''}`}
           onClick={isRecording ? stopRecording : startRecording}
