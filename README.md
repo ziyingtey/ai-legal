@@ -1,70 +1,150 @@
-# Getting Started with Create React App
+# AI Legal Assistant for the Rakyat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An AI-powered legal assistant designed to make legal documents accessible and understandable for Malaysian citizens. This application helps users understand legal documents, answer legal questions, and complete legal forms through an intuitive chat interface and document analysis workflow.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 🤖 Legal Q&A Chat
+- Interactive chatbot powered by OpenAI GPT-3.5
+- Answers general legal questions in simple, understandable language
+- Provides guidance on legal concepts and rights
+- Supports voice input and file attachments
 
-### `npm start`
+### 📄 Document Analysis & Completion
+- Upload legal documents (PDF, DOC, DOCX, TXT)
+- AI-powered document analysis using AWS Bedrock Mistral 7B
+- Automatic extraction of key information, risks, and required fields
+- Interactive form filling workflow
+- Generate completed legal documents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🛡️ Key Capabilities
+- Document summarization and risk assessment
+- Identification of important clauses and deadlines
+- Interactive question-answer workflow for form completion
+- Download completed documents
+- Malaysian legal terminology support
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technology Stack
 
-### `npm test`
+### Frontend
+- React 19.1.1
+- Material-UI (MUI) for UI components
+- Axios for API calls
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+- Node.js with Express.js
+- OpenAI API for chat functionality
+- AWS Bedrock (Mistral 7B) for document analysis
+- AWS Textract for document text extraction
+- Multer for file uploads
+- PDF-parse and Mammoth for document processing
 
-### `npm run build`
+## Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (v14 or higher)
+- OpenAI API key
+- AWS credentials with Bedrock access
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd aye-ai-legal-assistant
+```
 
-### `npm run eject`
+2. Install dependencies:
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Set up environment variables:
+Create a `.env` file in the root directory with:
+```
+OPENAI_API_KEY=your_openai_api_key
+AWS_ACCESS_KEY_ID=your_aws_access_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_SESSION_TOKEN=your_aws_session_token
+AWS_REGION=ap-southeast-1
+PORT=5000
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running the Application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Development Mode
+Start both frontend and backend:
+```bash
+npm run dev
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Or start them separately:
 
-## Learn More
+Backend server:
+```bash
+npm run server
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Frontend (in another terminal):
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Production Mode
+Build and start:
+```bash
+npm run build
+npm run server
+```
 
-### Code Splitting
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Legal Q&A Chat
+1. Open the application in your browser
+2. Click on the "Legal Q&A Chat" tab
+3. Type your legal questions or use voice input
+4. Get AI-powered responses and guidance
 
-### Analyzing the Bundle Size
+### Document Analysis & Completion
+1. Click on the "Document Analysis & Completion" tab
+2. Upload a legal document (PDF, DOC, DOCX, or TXT)
+3. Review the AI-generated analysis and summary
+4. Answer the interactive questions to complete the form
+5. Generate and download your completed document
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## API Endpoints
 
-### Making a Progressive Web App
+### Chat API
+- `POST /api/chat/message` - Send a message to the AI assistant
+- `GET /api/chat/document-types` - Get available document types
+- `GET /api/chat/common-questions` - Get common legal questions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Document API
+- `POST /api/documents/upload` - Upload and analyze a document
+- `POST /api/documents/generate-questions` - Generate form questions
+- `POST /api/documents/generate-document` - Generate completed document
 
-### Advanced Configuration
+## Security Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- API keys are stored in environment variables
+- File uploads are limited to 10MB
+- Only supported document formats are accepted
+- All AI responses include disclaimers about professional legal advice
 
-### Deployment
+## Legal Disclaimer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This AI assistant provides general legal information and guidance only. It should not be considered as professional legal advice. Users are advised to consult with qualified legal professionals for specific legal matters.
 
-### `npm run build` fails to minify
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For support or questions, please open an issue in the repository.
